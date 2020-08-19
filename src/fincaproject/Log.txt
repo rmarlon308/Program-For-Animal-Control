@@ -1,0 +1,36 @@
+2020-02-13  INSERT INTO corral (corralId, ubicacionCorral, diasEnCorral, desde, hasta) VALUES ('2', 'Ubicacion 2', '10', '2020-02-13', '2020-02-23');  
+
+2020-02-22  insert into venta(ventaId,precio,tipo) values ('0','0','NULL')  
+
+2020-02-22  INSERT INTO corral (corralId, ubicacionCorral, diasEnCorral, desde, hasta) VALUES ('0', 'Corral1', '10', '2020-02-22', '2020-03-03');  
+
+2020-02-22  INSERT INTO `finca`.`animal` (`animalId`, `fechaNacimiento`, `estado`, `foto`, `tipo`, `corralId`, `ventaId`,precioInicial,precioFinal)VALUES ('1', '2020-02-22', b'1', ?, 'Vaca', '0', '0','0','0');  
+
+2020-02-22  insert into finca.vacunas (vacunaId, nombre) values ('1','Aftosa')  
+
+2020-02-22  insert into vacunacion(vacunaId,animalId,fecha)values ('1','1','2020-02-16')  
+
+2020-02-22  DELETE FROM animal WHERE (`animalId` = '2');  
+
+2020-02-22  INSERT INTO `finca`.`animal` (`animalId`, `fechaNacimiento`, `estado`, `foto`, `tipo`, `corralId`, `ventaId`,precioInicial,precioFinal)VALUES ('2', '1111-11-11', b'1', ?, 'Vaca', '0', '0','0','0');  
+
+2020-08-18  call darDeBaja(1, '2020-08-18' , '', '' );  
+
+2020-08-18  call darDeBaja(2, '2020-08-11' , '', '' );  
+
+2020-08-18  INSERT INTO `finca`.`animal` (`animalId`, `fechaNacimiento`, `estado`, `foto`, `tipo`, `corralId`, `ventaId`,precioInicial,precioFinal)VALUES ('156', '2019-08-01', b'1', ?, 'Toro', '0', '0','0','0');  
+
+2020-08-18  call darDeBaja(1, '2020-08-18' , '', '' );  
+
+2020-08-18  INSERT INTO `finca`.`animal` (`animalId`, `fechaNacimiento`, `estado`, `foto`, `tipo`, `corralId`, `ventaId`,precioInicial,precioFinal)VALUES ('157', '1111-11-11', b'1', ?, 'Toro', '0', '0','0','0');  
+
+2020-08-18  call darDeBaja(1, '2020-08-18' , 'asf', 'asd' );  
+
+2020-08-18  UPDATE animal SET fechaNacimiento = '2020-02-22', numeroPartos = '0', corralId = '0', ventaId = '0', precioInicial = 0, precioFinal = 0 WHERE (animalId = '1');  
+
+2020-08-18  UPDATE animal SET fechaNacimiento = '2020-02-22', numeroPartos = '0', corralId = '0', ventaId = '0', precioInicial = 0, precioFinal = 0 WHERE (animalId = '1');  
+
+2020-08-18  call darDeBaja(1, '2020-08-18' , '', '' );  
+
+2020-08-18  INSERT INTO `finca`.`animal` (`animalId`, `fechaNacimiento`, `estado`, `foto`, `tipo`, `corralId`, `ventaId`,precioInicial,precioFinal)VALUES ('158', '1111-11-11', b'1', ?, 'Toro', '0', '0','0','0');  
+

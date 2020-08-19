@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="594.0" prefWidth="890.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLDocumentController">
+   <children>
+      <ComboBox fx:id="registrosComboBox" layoutX="39.0" layoutY="31.0" onAction="#seleccionarTabla" prefHeight="28.0" prefWidth="214.0" promptText="None" />
+      <ListView fx:id="listView1" layoutX="39.0" layoutY="76.0" onMouseClicked="#seleccionarItemRegistros" prefHeight="484.0" prefWidth="214.0" />
+      <GridPane fx:id="animalesGridPane" layoutX="273.0" layoutY="28.0" prefHeight="534.0" prefWidth="581.0" visible="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="343.1999816894531" minWidth="10.0" prefWidth="182.40001220703124" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.9999694824219" minWidth="10.0" prefWidth="210.3999755859375" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.9999694824219" minWidth="10.0" prefWidth="189.60002441406255" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="214.40000610351564" minHeight="10.0" prefHeight="187.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ComboBox fx:id="tipoComboBox" onAction="#seleccionarTipo" prefHeight="26.0" prefWidth="200.0" promptText="All" GridPane.columnIndex="1" />
+            <Label text="Seleccione el tipo de Animal:" textFill="WHITE" />
+            <DatePicker fx:id="datePickerAnimal" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="numeroPartos" maxWidth="-Infinity" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Fecha de Nacimiento:" textFill="WHITE" GridPane.rowIndex="2" />
+            <Label fx:id="labelPartos1" text="En corral:" textFill="WHITE" GridPane.rowIndex="3" />
+            <TextField fx:id="corralIdAnimales" maxWidth="-Infinity" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="labelPartos" text="Numero de Partos:" textFill="WHITE" GridPane.rowIndex="4" />
+            <Label fx:id="labelPartos2" text="Venta ID:" textFill="WHITE" GridPane.rowIndex="5" />
+            <TextField fx:id="ventaTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Pane fx:id="photoPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="180.0" fitWidth="200.0" layoutY="5.0" onMouseClicked="#photoClicked" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+            <GridPane fx:id="buttonPhotoPane" prefHeight="210.0" prefWidth="188.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#verPhotoButton" prefHeight="32.0" prefWidth="200.0" text="Ver" />
+                  <Button mnemonicParsing="false" onAction="#newPhotoButton" prefHeight="32.0" prefWidth="200.0" text="Nueva Imagen" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.20001220703125" minWidth="10.0" prefWidth="117.60003662109375" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.79998779296875" minWidth="10.0" prefWidth="91.19996337890626" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#eliminarAnimalButton" text="Eliminar" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#darDeBajaButton" text="Dar de Baja" />
+               </children>
+            </GridPane>
+            <GridPane GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.199951171875" minWidth="10.0" prefWidth="76.0000244140625" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.4000244140625" minWidth="10.0" prefWidth="107.1999755859375" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Foto:" textFill="WHITE" GridPane.rowIndex="1" />
+                  <Label text="Tipo:" textFill="WHITE" />
+                  <Label fx:id="tipoAnimalLabel" prefHeight="18.0" prefWidth="180.0" text="Tipo Animal" textFill="WHITE" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane GridPane.rowIndex="8">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#actualizarAnimalButton" text="Actualizar" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#nuevoAnimal" text="Nuevo" />
+               </children>
+            </GridPane>
+            <Label text="Precio Final: " textFill="WHITE" GridPane.rowIndex="7" />
+            <TextField fx:id="precioFinalAnimal" maxWidth="-Infinity" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="precioActualAnimal" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="Precio Actual: " textFill="WHITE" GridPane.rowIndex="6" />
+            <ComboBox fx:id="selectedCorral" onAction="#seleccionarCorral" prefHeight="28.0" prefWidth="187.0" promptText="Seleccion Corral" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <GridPane fx:id="corralGridPane" layoutX="273.0" layoutY="77.0" prefHeight="486.0" prefWidth="570.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.1999755859375" minWidth="10.0" prefWidth="160.00001220703126" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.400048828125" minWidth="10.0" prefWidth="265.59998779296876" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.7999877929687" minWidth="10.0" prefWidth="145.59998779296882" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Ubicacion del Corral: " textFill="WHITE" />
+            <Label text="Numero de Animales: " textFill="WHITE" GridPane.rowIndex="1" />
+            <Label text="Dias en Corral: " textFill="WHITE" GridPane.rowIndex="2" />
+            <Label text="Desde: " textFill="WHITE" GridPane.rowIndex="3" />
+            <Label text="Hasta: " textFill="WHITE" GridPane.rowIndex="4" />
+            <TextField fx:id="ubicacionCorral" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" />
+            <TextField fx:id="numeroAnimales" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="diasCorral" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="desdeCorral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="hastaCorral" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#nuevoCorral" text="Nuevo Corral" GridPane.rowIndex="5" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#actualizarCorral" text="Actualizar" />
+                  <Button mnemonicParsing="false" onAction="#eliminarCorral" text="Eliminar" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <Button mnemonicParsing="false" onAction="#cambioDeCorral" text="Cambio De Corral" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <TableView fx:id="dadoDeBajaTable" layoutX="22.0" layoutY="77.0" prefHeight="474.0" prefWidth="743.0" visible="false">
+         <columns>
+            <TableColumn fx:id="animalIdColumn" prefWidth="88.0" text="Animal ID" />
+            <TableColumn fx:id="fNacimientoColumn" prefWidth="130.0" text="Fecha Nacimiento" />
+            <TableColumn fx:id="nPartosColumn" text="# Partos" />
+            <TableColumn fx:id="tipoColumn" text="Tipo" />
+            <TableColumn fx:id="fBajaColumn" prefWidth="88.0" text="Fecha Baja" />
+            <TableColumn fx:id="lugarColumn" prefWidth="88.0" text="Lugar" />
+            <TableColumn fx:id="causaColumn" prefWidth="88.0" text="Causa" />
+            <TableColumn fx:id="precioColumn" text="Precio" />
+         </columns>
+      </TableView>
+      <TextField fx:id="byIdDadoDeBaja" layoutX="574.0" layoutY="32.0" visible="false" />
+      <GridPane fx:id="vacunasGridPane" layoutX="273.0" layoutY="76.0" prefHeight="462.0" prefWidth="466.0" visible="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Vacuna ID: " textFill="WHITE" />
+            <Label text="Nombre: " textFill="WHITE" GridPane.rowIndex="1" />
+            <TextField fx:id="nombreVacunaTextField" prefHeight="26.0" prefWidth="184.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <GridPane GridPane.rowIndex="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#nuevaVacuna" text="Nuevo" />
+                  <Button mnemonicParsing="false" onAction="#actualizarVacuna" text="Actualizar" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <Label fx:id="vacunaIdTextField" textFill="WHITE" GridPane.columnIndex="1" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#eliminarVavuna" text="Eliminar" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <Label fx:id="byIdLabel" layoutX="473.0" layoutY="36.0" text="Buscar por ID: " textFill="WHITE" visible="false" />
+      <GridPane fx:id="vacunarGridPane" layoutX="294.0" layoutY="28.0" prefHeight="534.0" prefWidth="556.0" visible="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="322.20001220703125" minWidth="10.0" prefWidth="230.60001220703126" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="332.8000122070313" minWidth="10.0" prefWidth="303.3999877929688" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="262.5999816894531" minHeight="10.0" prefHeight="45.79999389648435" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="504.20001831054685" minHeight="10.0" prefHeight="489.0000061035156" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ListView fx:id="vacunasListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#vacunasListViewClicled" prefHeight="484.0" prefWidth="214.0" GridPane.rowIndex="1" />
+            <GridPane prefHeight="486.0" prefWidth="297.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="18.0" prefWidth="134.0" text="Fecha de vacuna: " textFill="WHITE">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker fx:id="fechaVacuna" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#vacunarCorral" prefHeight="32.0" prefWidth="158.0" text="Vacunar por Corral" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" onAction="#VacunarId" prefHeight="32.0" prefWidth="158.0" text="Vacunar por ld" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ComboBox fx:id="selectedCorral1" onAction="#seleccionarCorral" prefHeight="30.0" prefWidth="156.0" promptText="Corral" />
+                  <ComboBox fx:id="selectedVacuna" onAction="#seleccionarVacuna" prefHeight="30.0" prefWidth="157.0" promptText="Vacuna" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <GridPane fx:id="hijosGridpane" layoutX="294.0" layoutY="28.0" prefHeight="534.0" prefWidth="582.0" visible="false">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.4000244140625" minWidth="10.0" prefWidth="223.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.5999755859375" minWidth="10.0" prefWidth="359.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="261.79999389648435" minHeight="10.0" prefHeight="38.40001220703125" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="495.99998779296874" minHeight="10.0" prefHeight="495.99998779296874" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ListView fx:id="hijosListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="214.0" GridPane.rowIndex="1" />
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <RadioButton fx:id="madresActivas" mnemonicParsing="false" onAction="#selectMadresActivas" text="Activos" textFill="WHITE" />
+                  <RadioButton fx:id="madresInactivas" mnemonicParsing="false" onAction="#selectMadresInactivas" text="Inactivos" textFill="WHITE" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#nuevoHijo" text="Nuevo Hijo" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#eliminarHijo" text="Eliminar Relacion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <GridPane fx:id="ventaGridPane" layoutX="286.0" layoutY="31.0" prefHeight="534.0" prefWidth="556.0" visible="false">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.39996337890625" minWidth="10.0" prefWidth="233.6000244140625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.4000244140625" minWidth="10.0" prefWidth="323.19997558593747" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="256.9999755859375" minHeight="10.0" prefHeight="39.8" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="499.40001525878904" minHeight="10.0" prefHeight="494.2" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ListView fx:id="animalesEnVentaListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#seleccionarItemRegistros" prefHeight="484.0" prefWidth="214.0" GridPane.rowIndex="1" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Precio: " textFill="WHITE" />
+                  <Label text="Tipo: " textFill="WHITE" GridPane.rowIndex="1" />
+                  <Label text="Numero de Animales: " textFill="WHITE" GridPane.rowIndex="2" />
+                  <Label fx:id="numeroAnimalesVenta" text="##" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tipoVenta" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="precioVenta" GridPane.columnIndex="1" />
+                  <GridPane GridPane.rowIndex="5">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.8" minWidth="10.0" prefWidth="76.8" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.79998779296875" minWidth="10.0" prefWidth="86.39999999999999" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#nuevaVenta" text="Nuevo" />
+                        <Button mnemonicParsing="false" onAction="#actualizarVenta" text="Actualizar" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#eliminarVenta" text="Eliminar" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Button mnemonicParsing="false" onAction="#realizarVenta" text="Realizar Venta" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="estadoVenta" text="Estado Venta" textFill="WHITE" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Fecha de la Venta: " textFill="WHITE" GridPane.rowIndex="3" />
+                  <Label fx:id="fechaVentaLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
