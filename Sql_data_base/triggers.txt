@@ -1,0 +1,132 @@
+////////////////TRIGGERS//////////////////////////////////////////////////////////
+delimiter #
+CREATE TRIGGER aumentoAnimalesCorralI after insert on animal
+for each row
+begin	
+    set @v = (select count(animalId) from animal where corralId = new.corralId and estado = b'1');
+	UPDATE `finca`.`corral` SET `numeroDeAnimales` = @v  WHERE (`corralId` = new.corralId);
+	
+end#
+delimiter ;
+
+delimiter #
+CREATE TRIGGER aumentoAnimalesCorral after update on animal
+for each row
+begin	
+    set @v = (select count(animalId) from animal where corralId = new.corralId and estado = b'1');
+	UPDATE `finca`.`corral` SET `numeroDeAnimales` = @v  WHERE (`corralId` = new.corralId);
+	
+end#
+delimiter ;
+
+delimiter #
+CREATE TRIGGER aumentoAnimalesCorralD after delete on animal
+for each row
+begin	
+    set @v = (select count(animalId) from animal where corralId = old.corralId and estado = b'1');
+	UPDATE `finca`.`corral` SET `numeroDeAnimales` = @v  WHERE (`corralId` = old.corralId);
+	
+end#
+delimiter ;
+
+delimiter #
+CREATE TRIGGER aumentoAnimalesVenta after update on animal
+for each row
+begin	
+    set @v = (select count(animalId) from animal where ventaId = new.ventaId);
+	UPDATE `finca`.`venta` SET `numeroAnimales` = @v  WHERE (`ventaId` = new.ventaId);
+	
+end#
+delimiter ;
+
+delimiter #
+CREATE TRIGGER aumentoAnimalesVentaD after delete on animal
+for each row
+begin	
+    set @v = (select count(animalId) from animal where ventaId = old.ventaId and estado = b'1');
+	UPDATE `finca`.`venta` SET `numeroAnimales` = @v  WHERE (`ventaId` = old.ventaId);
+	
+end#
+delimiter ;
+
+delimiter #
+CREATE TRIGGER aumentoAnimalesHijos after insert on hijos
+for each row
+begin	
+    set @v = (select count(hijosId) from hijos where animalId = new.animalId);
+	UPDATE `finca`.`animal` SET `numeroPartos` = @v  WHERE (`animalId` = new.animalId);
+end#
+delimiter ;
+/////////////////////////////////Stored Procedures/////////////////////////////////
+CREATE DEFINER=`root`@`localhost` PROCEDURE `newToro`(in id int, in fechaN date, in foto blob,in corral int)
+BEGIN
+	DECLARE _rollback BOOL DEFAULT 0;
+	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET _rollback = 1;
+    SET SQL_SAFE_UPDATES = 0;
+    START TRANSACTION;
+    
+    IF NOT EXISTS (SELECT corralId from corral where corralId = corral) then
+		SET _rollback = 1;
+	ELSE
+		INSERT INTO `finca`.`animal` (`animalId`, `fechaNacimiento`, `estado`, `tipo`, `corralId`,ventaId) 
+		VALUES (id, fechaN, b'1', 'Toro', corral,0);
+	END IF;
+
+	IF _rollback THEN
+		ROLLBACK;
+	ELSE	
+		COMMIT;
+	END IF;
+END
+
+
+
+/////////
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambioCorral`(in corral1 int, in corral2 int)
+BEGIN
+	DECLARE _rollback BOOL DEFAULT 0;
+	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET _rollback = 1;
+    SET SQL_SAFE_UPDATES = 0;
+    START TRANSACTION;
+    
+    IF NOT EXISTS (SELECT corralId from corral where corralId = corral1) then
+		SET _rollback = 1;
+	END IF;
+    IF NOT EXISTS (SELECT corralId from corral where corralId = corral2) then
+		SET _rollback = 1;
+	END IF;
+    
+    UPDATE animal set corralId = corral2 where corralId = corral1;
+    UPDATE corral SET numeroDeAnimales = 0 WHERE corralId = corral1;
+    
+    IF _rollback THEN
+		ROLLBACK;
+	ELSE	
+		COMMIT;
+	END IF;
+END
+/////////
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darDeBaja`(in id int, in fBaja date, in lu varchar(45), in cau varchar(45) )
+BEGIN
+	DECLARE _rollback BOOL DEFAULT 0;
+	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET _rollback = 1;
+    SET SQL_SAFE_UPDATES = 0;
+    START TRANSACTION;
+    set @v1 = (select fechaNacimiento from animal where animalId = id);
+    set @v2 = (select numeroPartos from animal where animalId = id);
+    set @v3 = (select foto from animal where animalId = id);
+    set @v4 = (select tipo from animal where animalId = id);
+
+	INSERT INTO dadodebaja(animalId,fechaNacimiento,numeroPartos,foto,tipo,fechaBaja,lugar,causa)
+		VALUES(id,@v1,@v2,@v3,@v4,fBaja,lu,cau);
+        
+	DELETE FROM animal WHERE animalId = id;
+    
+    
+    IF _rollback THEN
+		ROLLBACK;
+	ELSE	
+		COMMIT;
+	END IF;
+	
+END
